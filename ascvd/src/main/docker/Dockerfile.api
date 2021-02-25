@@ -1,0 +1,7 @@
+FROM openjdk:latest 
+
+USER root
+
+COPY target/*-runner.jar /app.jar
+
+ENTRYPOINT [ "java","-classpath","/app.jar", "com.ibm.healthpatterns.ascvd.interop.AscvdDriverCli" ]
