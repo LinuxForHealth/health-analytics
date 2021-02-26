@@ -204,7 +204,7 @@ public class AscvdDriverCli {
         File outputDir = new File(outputPath);
         if (outputDir.exists() && outputDir.isDirectory()) {
           try (Writer writer = new BufferedWriter(
-              new FileWriter(new File(outputDir, "native.ascvd.json")))) {
+              new FileWriter(new File(outputDir, "ascvd.json")))) {
             writer.write(jsonOutput);
           }
         }
