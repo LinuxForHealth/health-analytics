@@ -1,10 +1,10 @@
-package com.ibm.healthpatterns.ascvd;
+package com.ibm.health.analytics.ascvd;
 
-import com.ibm.healthpatterns.ascvd.coefficient.AscvdCoefficientMgr;
-import com.ibm.healthpatterns.ascvd.coefficient.AscvdFeature;
-import com.ibm.healthpatterns.ascvd.interop.AscvdInput;
-import com.ibm.healthpatterns.ascvd.interop.AscvdOutput;
-import com.ibm.healthpatterns.ascvd.interop.AscvdOutputBuilder;
+import com.ibm.health.analytics.ascvd.coefficient.AscvdCoefficientMgr;
+import com.ibm.health.analytics.ascvd.coefficient.AscvdFeature;
+import com.ibm.health.analytics.ascvd.interop.AscvdInput;
+import com.ibm.health.analytics.ascvd.interop.AscvdOutput;
+import com.ibm.health.analytics.ascvd.interop.AscvdOutputBuilder;
 
 public enum AscvdModel {
 	

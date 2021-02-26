@@ -1,9 +1,9 @@
-package com.ibm.healthpatterns.ascvd;
+package com.ibm.health.analytics.ascvd;
 import org.junit.Assert;
 import org.junit.Test;
-import com.ibm.healthpatterns.ascvd.interop.AscvdInput;
-import com.ibm.healthpatterns.ascvd.interop.AscvdInputBuilder;
-import com.ibm.healthpatterns.ascvd.interop.AscvdOutput;
+import com.ibm.health.analytics.ascvd.interop.AscvdInput;
+import com.ibm.health.analytics.ascvd.interop.AscvdInputBuilder;
+import com.ibm.health.analytics.ascvd.interop.AscvdOutput;
 
 public class AscvdModelTest {
 

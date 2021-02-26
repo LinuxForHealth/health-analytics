@@ -1,4 +1,4 @@
-package com.ibm.healthpatterns.ascvd.coefficient;
+package com.ibm.health.analytics.ascvd.coefficient;
 
 import java.io.IOException;
 import java.nio.charset.Charset;

@@ -1,4 +1,4 @@
-package com.ibm.healthpatterns.ascvd.interop;
+package com.ibm.health.analytics.ascvd.interop;
 
 public class AscvdOutputBuilder {
 

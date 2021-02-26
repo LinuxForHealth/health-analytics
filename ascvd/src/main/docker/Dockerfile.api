@@ -4,4 +4,4 @@ USER root
 
 COPY target/*-runner.jar /app.jar
 
-ENTRYPOINT [ "java","-classpath","/app.jar", "com.ibm.healthpatterns.ascvd.interop.AscvdDriverCli" ]
+ENTRYPOINT [ "java","-classpath","/app.jar", "com.ibm.health.analytics.ascvd.interop.AscvdDriverCli" ]

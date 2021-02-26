@@ -1,10 +1,10 @@
-package com.ibm.healthpatterns.ascvd;
+package com.ibm.health.analytics.ascvd;
 
 import static io.restassured.RestAssured.given;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.number.IsCloseTo;
 import org.junit.jupiter.api.Test;
-import com.ibm.healthpatterns.ascvd.interop.AscvdDriverCli;
+import com.ibm.health.analytics.ascvd.interop.AscvdDriverCli;
 import io.quarkus.test.junit.QuarkusTest;
 
 @QuarkusTest

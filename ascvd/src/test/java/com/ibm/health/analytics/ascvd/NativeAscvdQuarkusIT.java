@@ -1,4 +1,4 @@
-package com.ibm.healthpatterns.ascvd;
+package com.ibm.health.analytics.ascvd;
 
 import io.quarkus.test.junit.NativeImageTest;
 

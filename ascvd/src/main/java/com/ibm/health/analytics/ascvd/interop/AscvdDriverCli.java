@@ -1,4 +1,4 @@
-package com.ibm.healthpatterns.ascvd.interop;
+package com.ibm.health.analytics.ascvd.interop;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -19,7 +19,7 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ibm.healthpatterns.ascvd.AscvdModel;
+import com.ibm.health.analytics.ascvd.AscvdModel;
 
 @Path("/ascvd")
 public class AscvdDriverCli {
