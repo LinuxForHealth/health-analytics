@@ -3,14 +3,15 @@ from datetime import date
 from dateutil.parser import parse
 from flask import Flask, jsonify, request
 from flask_restful import Resource, Api, reqparse, abort, marshal, fields
+from pip._vendor.pyparsing import line
 
 app = Flask(__name__)
 
 def extract_age(resourceArray):
-    birthDate=None
+    birthDate = None
     for resource in resourceArray:
         if resource['resourceType']=='Patient':
-            if resource['birthDate'] != None:
+            if 'birthDate' in resource:
                 birthDate = resource['birthDate']
     if birthDate != None:
         parts = birthDate.split('-')
@@ -30,18 +31,18 @@ def extract_conditions(resourceArray):
     conditions=[]
     for resource in resourceArray:
         if resource['resourceType'] == 'Condition':
-            if resource['code'] != None:
-                code=resource['code']
-                if code['coding'] != None:
+            if 'code' in resource:
+                code = resource['code']
+                if 'coding' in code:
                     for coding in code['coding']:
-                        if coding['display'] != None:
+                        if 'display' in coding:
                             conditions.append(coding['display'])
     
     return conditions
 
 def extract_gender(resourceArray):
     for patient in extract_resourceType(resourceArray, 'Patient'):
-        if patient['gender'] != None:
+        if 'gender' in patient:
             return patient['gender']
     return None
 
@@ -52,23 +53,23 @@ def extract_race(resourceArray):
 
 def extract_hdl(sorted_observations):
     for observation in sorted_observations:
-        if observation['code'] != None:
+        if 'code' in observation:
             code = observation['code']
-            if code['coding'] != None:
+            if 'coding' in code:
                 for coding in code['coding']:
-                    if coding['display'] != None:
+                    if 'display' in coding:
                         if coding['display']=='High Density Lipoprotein Cholesterol':
                             return observation['valueQuantity']['value']
     return None
 
 def extract_systolic(sorted_observations):
     for observation in sorted_observations:
-        isBP=False
-        if observation['code'] != None:
+        isBP = False
+        if 'code' in observation:
             code = observation['code']
-            if code['coding'] != None:
+            if 'coding' in code:
                 for coding in code['coding']:
-                    if coding['display'] != None:
+                    if 'display' in coding:
                         if coding['display'] == 'Blood Pressure':
                             isBP = True
         if isBP:
@@ -79,11 +80,11 @@ def extract_systolic(sorted_observations):
 
 def extract_cholesterol(sorted_observations):
     for observation in sorted_observations:
-        if observation['code'] != None:
+        if 'code' in observation:
             code = observation['code']
-            if code['coding'] != None:
+            if 'coding' in code:
                 for coding in code['coding']:
-                    if coding['display'] != None:
+                    if 'display' in coding:
                         if coding['display'] == 'Total Cholesterol':
                             return observation['valueQuantity']['value']
     return None
@@ -112,11 +113,11 @@ def extract_is_smoker(sorted_observations):
                "Current Heavy tobacco smoker",
                "Current Light tobacco smoker"]
     for observation in sorted_observations:
-        if observation['code'] != None:
+        if 'code' in observation:
             code = observation['code']
-            if code['coding'] != None:
+            if 'coding' in code:
                 for coding in code['coding']:
-                    if coding['display'] != None:
+                    if 'display' in coding:
                         if coding['display']=='Tobacco smoking status NHIS':
                             text = observation['valueCodeableConcept']['text']
                             if text in SMOKERS:
@@ -131,8 +132,26 @@ def extract_bp_treated(sorted_observations):
 @app.route("/", methods=['POST'])
 def extract_ascvd_input_rest():
     resourceArray = []
-    for line in request.data.decode("utf-8").splitlines():
-        resourceArray.append(json.loads(line))
+    request_data = request.data.decode("utf-8")
+    try:
+        # if a single fhir bundle is passed in, add it to the resourceArray
+        jsonObject = json.loads(request_data)
+        if 'resourceType' in jsonObject and jsonObject['resourceType'] == 'Bundle' and 'entry' in jsonObject:
+            resourceArray.append(jsonObject)
+    except ValueError:
+        pass
+
+    if not resourceArray:
+        for line in request_data.splitlines():
+            # if multiple lines are passed in, process each line separately
+            json_line = json.loads(line)
+            if 'resourceType' in json_line and json_line['resourceType'] == 'Bundle' and 'entry' in json_line:
+                # this looks like a formatted bundle
+                entries = json_line["entry"]
+                for entry in entries:
+                    resourceArray.append(entry["resource"])
+            else:
+                resourceArray.append(json_line)
     return extract_ascvd_input(resourceArray)
 
 def extract_ascvd_input(resourceArray):

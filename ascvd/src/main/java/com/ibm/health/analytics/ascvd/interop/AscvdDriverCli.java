@@ -21,7 +21,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ibm.health.analytics.ascvd.AscvdModel;
 
-@Path("/ascvd")
+@Path("/")
 public class AscvdDriverCli {
 
   public static final String AGE = "age";
