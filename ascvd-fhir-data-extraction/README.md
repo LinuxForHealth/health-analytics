@@ -14,15 +14,15 @@ Check out the source and build the docker image:
 
 1. `git clone https://github.com/Alvearie/health-analytics.git`
 1. `cd health-analytics/ascvd-fhir-data-extraction`
-1. `docker build . -t <<GROUP>>/fhir_data_extraction:1.0-SNAPSHOT`
-1. `docker push <<GROUP>>/fhir_data_extraction:1.0-SNAPSHOT`
+1. `docker build . -t <<GROUP>>/ascvd_fhir_data_extraction:1.0-SNAPSHOT`
+1. `docker push <<GROUP>>/ascvd_fhir_data_extraction:1.0-SNAPSHOT`
 
 
 ### Deploying
 
 This docker image can be run in standalone docker via:
 
-`docker run -p:5000:5000 <<GROUP>>/fhir_data_extraction:1.0-SNAPSHOT`
+`docker run -p:5000:5000 <<GROUP>>/ascvd_fhir_data_extraction:1.0-SNAPSHOT`
 
 It can also be run in kubernetes using kubernetes.yaml.  However, you will first need to update two values in that file:
 
