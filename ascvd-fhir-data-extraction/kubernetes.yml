@@ -1,22 +1,22 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: fhir-data-extraction
+  name: ascvd-fhir-data-extraction
   labels:
-    app: fhir-data-extraction
+    app: ascvd-fhir-data-extraction
 spec:
   ports:
     - port: 5000
-      name: fhir-data-extraction
+      name: ascvd-fhir-data-extraction
       protocol: TCP
   selector:
-    app: fhir-data-extraction
+    app: ascvd-fhir-data-extraction
   type: NodePort
 ---
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: fhir-data-extraction-ingress
+  name: ascvd-fhir-data-extraction-ingress
   annotations:
     kubernetes.io/ingress.class: public-iks-k8s-nginx
          # IBM: public-iks-k8s-nginx
@@ -24,27 +24,27 @@ metadata:
          # AWS: nginx
 spec:
   rules:
-    - host: fhir-data-extraction.<<INGRESS_SUBDOMAIN>>
+    - host: atc-ascvd-fhir-data-extraction.integration-k8s-cluster-dcc48c44d831198cb8496b1ec68d7d12-0000.us-south.containers.appdomain.cloud
       http:
         paths:
           - path: /
             backend:
-              serviceName: fhir-data-extraction
+              serviceName: ascvd-fhir-data-extraction
               servicePort: 5000
 ---
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: fhir-data-extraction
+  name: ascvd-fhir-data-extraction
 spec:
   selector:
     matchLabels:
-      app: fhir-data-extraction
+      app: ascvd-fhir-data-extraction
   template:
     metadata:
       labels:
-        app: fhir-data-extraction
+        app: ascvd-fhir-data-extraction
     spec:
       containers:
-        - name: fhir-data-extraction
-          image: docker.io/<<GROUP>>/fhir_data_extraction:0.0.1
+        - name: ascvd-fhir-data-extraction
+          image: docker.io/atclark/ascvd_fhir_data_extraction:0.0.1

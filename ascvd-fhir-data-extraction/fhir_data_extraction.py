@@ -135,9 +135,11 @@ def extract_ascvd_input_rest():
     request_data = request.data.decode("utf-8")
     try:
         # if a single fhir bundle is passed in, add it to the resourceArray
-        jsonObject = json.loads(request_data)
-        if 'resourceType' in jsonObject and jsonObject['resourceType'] == 'Bundle' and 'entry' in jsonObject:
-            resourceArray.append(jsonObject)
+        json_object = json.loads(request_data)
+        if 'resourceType' in json_object and json_object['resourceType'] == 'Bundle' and 'entry' in json_object:
+            entries = json_object["entry"]
+            for entry in entries:
+                resourceArray.append(entry["resource"])
     except ValueError:
         pass
 
