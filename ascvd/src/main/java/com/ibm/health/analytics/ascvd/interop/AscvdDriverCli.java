@@ -5,11 +5,14 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
@@ -17,11 +20,12 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ibm.health.analytics.ascvd.AscvdModel;
 
-@Path("/ascvd")
+@Path("/")
 public class AscvdDriverCli {
 
   public static final String AGE = "age";
@@ -143,15 +147,15 @@ public class AscvdDriverCli {
   @GET
   @Produces(MediaType.APPLICATION_JSON)
   public static final AscvdOutput calculate(
-      @QueryParam(MALE) boolean isMale,
-      @QueryParam(AFRICAN_AMERICAN) boolean isAfricanAmerican, 
-      @QueryParam(AGE) int age,
-      @QueryParam(TOTAL_CHOLESTEROL) double totalCholesterol,
-      @QueryParam(HDL_CHOLESTEROL) double hdlCholesterol,
-      @QueryParam(SYSTOLIC_BP) double systolicBp,
-      @QueryParam(BP_TREATED) boolean isBpTreated,
-      @QueryParam(CURRENT_SMOKER) boolean isCurrentSmoker,
-      @QueryParam(DIABETIC) boolean isDiabetic) {
+		  @NotNull @QueryParam(MALE) boolean isMale,
+		  @NotNull @QueryParam(AFRICAN_AMERICAN) boolean isAfricanAmerican, 
+		  @NotNull @QueryParam(AGE) int age,
+		  @NotNull @QueryParam(TOTAL_CHOLESTEROL) double totalCholesterol,
+		  @NotNull @QueryParam(HDL_CHOLESTEROL) double hdlCholesterol,
+		  @NotNull @QueryParam(SYSTOLIC_BP) double systolicBp,
+		  @NotNull @QueryParam(BP_TREATED) boolean isBpTreated,
+		  @NotNull @QueryParam(CURRENT_SMOKER) boolean isCurrentSmoker,
+		  @NotNull @QueryParam(DIABETIC) boolean isDiabetic) {
     AscvdInput input = AscvdInputBuilder.newInstance()
         .isMale(isMale)
         .isAfricanAmerican(isAfricanAmerican)

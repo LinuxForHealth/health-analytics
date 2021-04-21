@@ -42,7 +42,7 @@ docker run -p 8080:8080 alvearie/ascvd:0.0.1
 Once the image is deployed, you can access the ASCVD API using a URI:
 
 ```
-curl "http://<<HOST_NAME>>:8080/ascvd?\
+curl "http://<<HOST_NAME>>:8080?\
 africanAmerican=<<AFRICAN_AMERICAN>>\
 &age=<<AGE>>&\
 totalCholesterol=<<TOTAL_CHOLESTEROL>>\
@@ -68,7 +68,13 @@ docker push <<GROUP>>/ascvd:0.0.1-SNAPSHOT
 
 ## Running the model from a kubernetes container.
 
-You can run this model from a kubernetes container by first building the project:
+You can run this model from a kubernetes container by first building the project.  Before building, update the application.properties file to reflect your cloud setup:
+
+- Set `quarkus.container-image.group` to your docker group
+- Set `quarkus.kubernetes.ingress.host` to your ingress host
+- Update `quarkus.kubernetes.annotations."kubernetes.io/ingress.class"` to reflect your cloud's ingress class. By default, it's set to IBM Cloud's preferred class.
+
+Then run:
 
 ```
 mvn package
@@ -89,7 +95,7 @@ kubectl get services ascvd
 You can access the ASCVD API using a URI:
 
 ```
-curl "http://<<EXTERNAL_IP>>:8080/ascvd?\
+curl "http://<<EXTERNAL_IP>>:8080?\
 africanAmerican=<<AFRICAN_AMERICAN>>\
 &age=<<AGE>>&\
 totalCholesterol=<<TOTAL_CHOLESTEROL>>\
