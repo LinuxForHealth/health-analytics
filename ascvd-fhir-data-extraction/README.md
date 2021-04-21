@@ -26,8 +26,12 @@ This docker image can be run in standalone docker via:
 
 It can also be run in kubernetes using kubernetes.yaml.  However, you will first need to update two values in that file:
 
-<<INGRESS_SUBDOMAIN>> - Update this to point to your kubernetes ingress subdomain.  If you prefer, you can replace the entire "host" value for the ingress.
-<<GROUP>> - Update this to match the group value used above when building docker.
+`<<INGRESS_CLASS>>` - Update this to match the ingress class for your target cloud environment.
+
+`<<INGRESS_SUBDOMAIN>>` - Update this to point to your kubernetes ingress subdomain.  If you prefer, you can replace the entire "host" value for the ingress.
+
+`<<GROUP>>` - Update this to match the group value used above when building docker.
+
 
 After updating these two parameters, you can deploy the ASCVD FHIR Data Extraction API using 
 

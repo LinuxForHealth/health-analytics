@@ -18,13 +18,13 @@ kind: Ingress
 metadata:
   name: ascvd-fhir-data-extraction-ingress
   annotations:
-    kubernetes.io/ingress.class: public-iks-k8s-nginx
+    kubernetes.io/ingress.class: <<INGRESS_CLASS>>
          # IBM: public-iks-k8s-nginx
          # Azure: addon-http-application-routing
          # AWS: nginx
 spec:
   rules:
-    - host: atc-ascvd-fhir-data-extraction.integration-k8s-cluster-dcc48c44d831198cb8496b1ec68d7d12-0000.us-south.containers.appdomain.cloud
+    - host: ascvd-fhir-data-extraction.<<INGRESS_SUBDOMAIN>>
       http:
         paths:
           - path: /
@@ -47,4 +47,4 @@ spec:
     spec:
       containers:
         - name: ascvd-fhir-data-extraction
-          image: docker.io/atclark/ascvd_fhir_data_extraction:0.0.1
+          image: docker.io/<<GROUP>>/ascvd_fhir_data_extraction:0.0.1
