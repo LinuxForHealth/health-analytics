@@ -24,7 +24,7 @@ metadata:
          # AWS: nginx
 spec:
   rules:
-    - host: atc-ascvd-ascvd-from-fhir.<<INGRESS_SUBDOMAIN>>
+    - host: ascvd-from-fhir.<<INGRESS_SUBDOMAIN>>
       http:
         paths:
           - path: /
@@ -47,7 +47,7 @@ spec:
     spec:
       containers:
         - name: ascvd-from-fhir
-          image: docker.io/<<GROUP>>/ascvd_from_fhir:0.0.1
+          image: docker.io/<<GROUP>>/ascvd_from_fhir:1.0-SNAPSHOT
           imagePullPolicy: Always
           env:
             - name: ASCVD_URL
