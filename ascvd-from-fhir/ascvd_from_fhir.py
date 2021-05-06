@@ -253,7 +253,7 @@ def calculate_ascvd(ascvd_data):
 
 
 def build_ascvd_risk_assessment(ascvd_data, ten_year_risk):
-    patient_id="PATIENT_ID"
+    patient_id = None
     encounter_date_time=date.today().strftime("%Y-%m-%dT%H:%M:%SZ")
 
     referenced_resources = set()
@@ -281,8 +281,9 @@ def build_ascvd_risk_assessment(ascvd_data, ten_year_risk):
     # identifier['value'] = 'risk-assessment-cardiac'
     # fhirResp['identifier'].append(identifier)
     fhirResp['status'] = 'final'
-    fhirResp['subject'] = {}
-    fhirResp['subject']['reference'] = patient_id
+    if (patient_id != None):
+        fhirResp['subject'] = {}
+        fhirResp['subject']['reference'] = patient_id
     # fhirResp['encounter'] = {}
     # fhirResp['encounter']['reference'] = 'Encounter/example'
     fhirResp['occurrenceDateTime'] = encounter_date_time
@@ -301,7 +302,7 @@ def build_ascvd_risk_assessment(ascvd_data, ten_year_risk):
     fhirResp['prediction'] = []
     prediction = {}
     outcome = {}
-    outcome['text'] = 'Heart Attack'
+    outcome['text'] = 'atherosclerotic cardiovascular disease'
     prediction['outcome'] = outcome
     prediction['probabilityDecimal'] = ten_year_risk
     # whenRange = {}
@@ -333,7 +334,6 @@ def extract_ascvd_input_from_fhir():
 @app.route("/fhir", methods=['POST'])
 def update_bundle_with_ascvd_risk_assessment():
     ascvd_data = extract_ascvd_input_from_fhir()
-    print("ascvd_data: "+str(ascvd_data))
     ten_year_risk = calculate_ascvd(ascvd_data)
 
     # Build RiskAssessment FHIR resource
