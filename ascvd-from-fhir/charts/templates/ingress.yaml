@@ -18,7 +18,7 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: {{ .Release.Name }}-ascvd-from-fhir
+                name: ascvd-from-fhir
                 port: 
                   number: {{ $ingressPort }}
 {{- end }}

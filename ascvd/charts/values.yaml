@@ -14,8 +14,8 @@ service:
 
 ingress:
   enabled: false
-  class: <<CLASS>
+  class:
          # IBM: public-iks-k8s-nginx
          # Azure: addon-http-application-routing
          # AWS: nginx
-  host: <<HOST>>
+  host:
