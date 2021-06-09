@@ -1,0 +1,41 @@
+apiVersion: v1
+entries:
+  ascvd:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2021-06-09T11:21:30.927218-05:00"
+    description: A Helm Chart to deploy the Alvearie Atherosclerotic Cardiovascular Disease (ASCVD) service.
+    digest: b6c41296b921260c6873b00bd135dd1419f57c7210325b1187cdf7e00d3fd527
+    home: https://github.com/Alvearie/health-analytics/tree/main/ascvd
+    keywords:
+    - ibm
+    - alvearie
+    - ascvd
+    maintainers:
+    - email: atclark@us.ibm.com
+      name: Adam T. Clark
+    name: ascvd
+    type: application
+    urls:
+    - ascvd.tgz
+    version: 0.1.0
+  ascvd-from-fhir:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2021-06-09T11:21:30.92672-05:00"
+    description: A Helm Chart to deploy the Alvearie Atherosclerotic Cardiovascular Disease (ASCVD) data extraction (from FHIR) service.
+    digest: 921496d9616eaf1331f120247afc0b4623c89b78c11872c5a9bd08f5101d1fc1
+    home: https://github.com/Alvearie/health-analytics/tree/main/ascvd-from-fhir
+    keywords:
+    - ibm
+    - alvearie
+    - ascvd
+    maintainers:
+    - email: atclark@us.ibm.com
+      name: Adam T. Clark
+    name: ascvd-from-fhir
+    type: application
+    urls:
+    - ascvd-from-fhir.tgz
+    version: 0.1.0
+generated: "2021-06-09T11:21:30.924789-05:00"

@@ -1,0 +1,21 @@
+# Default values for ascvd.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: atclark/ascvd
+  pullPolicy: Always
+  tag: 0.0.1-SNAPSHOT
+service:
+  type: ClusterIP
+  port: 8080
+
+ingress:
+  enabled: false
+  class:
+         # IBM: public-iks-k8s-nginx
+         # Azure: addon-http-application-routing
+         # AWS: nginx
+  host:

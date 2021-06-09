@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "ascvd-from-fhir.fullname" . }}
+  labels:
+    {{- include "ascvd-from-fhir.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "ascvd-from-fhir.selectorLabels" . | nindent 6 }}
+
+
+  template:
+    metadata:
+    {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      labels:
+        {{- include "ascvd-from-fhir.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - name: ascvd-from-fhir
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+          - name: http
+            containerPort: {{ .Values.service.port }}
+            protocol: TCP
+        env:
+        - name: ASCVD_URL
+          value: {{ .Values.ascvd.url}}
