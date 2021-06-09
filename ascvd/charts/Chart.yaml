@@ -1,6 +1,6 @@
 apiVersion: v2
 name: ascvd
-description: A Helm Chart to deploy the Alvearie Atherosclerotic Cardiovascular Disease (ASCVD) service.
+description: A Helm Chart to deploy the Alvearie Atherosclerotic Cardiovascular Disease (ASCVD) service.  This service will calculate the risk of cardiovascular disease based on a small set of input parameters.
 
 # A chart can be either an 'application' or a 'library' chart.
 #
