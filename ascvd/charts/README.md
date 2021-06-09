@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This [Helm](https://github.com/kubernetes/helm) chart installs an instance of the [Alvearie De-Identification](https://github.com/Alvearie/de-identification) service in a Kubernetes cluster.
+This [Helm](https://github.com/kubernetes/helm) chart installs an instance of the [Alvearie ASCVD](https://github.com/Alvearie/health-analytics/tree/main/ascvd) service in a Kubernetes cluster.
 
 ## Pre-Requisites
 
@@ -16,42 +16,43 @@ This [Helm](https://github.com/kubernetes/helm) chart installs an instance of th
 Git clone this repository and `cd` into this directory.
 
 ```bash
-git clone https://github.com/Alvearie/health-patterns.git
-cd health-patterns/clinical-ingestion/helm-charts/alvearie-ingestion/charts/deid
+git clone https://github.com/Alvearie/health-analytics.git
+cd health-analytics/ascvd/charts/
 ```
 
 ### Install the Chart
 
-Install the helm chart with a release name `deid`:
+Install the helm chart with a release name `ascvd`:
 
 ```bash
-helm install deid .
+helm install ascvd .
 ```
+
+This will install ASCVD, but it will not be exposed outside the cluster. To add an ingress for ASCVD, use:
+
+```bash
+helm install ascvd . --set ingress.enabled=true  --set ingress.class=<<INGRESS_CLASS>> --set ingress.host=<<HOSTNAME>>
+```
+
+where `<<INGRESS_CLASS>>` is the ingress class used by your cloud environment, and `<<HOSTNAME>>` is the configured hostname you wish to use for your ASCVD ingress.
 
 ### Using the Chart
 
-Access your FHIR server at: `http://<external-ip>:8080/api/v1/health`
+See [ASCVD](../README.md) for information about calling the deployed API.
 
 ## Uninstallation
 
-To uninstall/delete the `deid` deployment:
+To uninstall/delete the `ascvd` deployment:
 
 ```bash
-helm delete deid
+helm delete ascvd
 ```
-
-## Configuration
-
-Each requirement is configured with the options provided by that Chart.
-Please consult the relevant charts for their configuration options.
-
-See `values.yaml`.
 
 ## Contributing
 
-Feel free to contribute by making a [pull request](https://github.com/Alvearie/health-patterns/pull/new/master).
+Feel free to contribute by making a [pull request](https://github.com/Alvearie/health-analytics/pull/new/master).
 
-Please review the [Contributing Guide](https://github.com/Alvearie/health-patterns/blob/main/CONTRIBUTING.md) for information on how to get started contributing to the project.
+Please review the [Contributing Guide](https://github.com/Alvearie/health-analytics/blob/main/CONTRIBUTING.md) for information on how to get started contributing to the project.
 
 ## License
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) 
