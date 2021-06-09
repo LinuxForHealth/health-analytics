@@ -5,9 +5,9 @@
 replicaCount: 1
 
 image:
-  repository: atclark/ascvd
+  repository: alvearie/ascvd
   pullPolicy: Always
-  tag: 0.0.1-SNAPSHOT
+  tag: 0.0.1
 service:
   type: ClusterIP
   port: 8080

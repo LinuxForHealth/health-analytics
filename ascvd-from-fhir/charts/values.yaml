@@ -5,9 +5,9 @@
 replicaCount: 1
 
 image:
-  repository: atclark/ascvd-from-fhir
+  repository: alvearie/ascvd-from-fhir
   pullPolicy: Always
-  tag: 0.0.1-SNAPSHOT
+  tag: 0.0.1
 service:
   type: ClusterIP
   port: 5000
