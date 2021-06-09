@@ -18,13 +18,13 @@ kind: Ingress
 metadata:
   name: ascvd-from-fhir-ingress
   annotations:
-    kubernetes.io/ingress.class: <<INGRESS_CLASS>>
+    kubernetes.io/ingress.class: 
          # IBM: public-iks-k8s-nginx
          # Azure: addon-http-application-routing
          # AWS: nginx
 spec:
   rules:
-    - host: ascvd-from-fhir.<<INGRESS_SUBDOMAIN>>
+    - host: 
       http:
         paths:
           - path: /
@@ -47,8 +47,8 @@ spec:
     spec:
       containers:
         - name: ascvd-from-fhir
-          image: docker.io/<<GROUP>>/ascvd_from_fhir:1.0-SNAPSHOT
+          image: docker.io/alvearie/ascvd_from_fhir:0.0.1
           imagePullPolicy: Always
           env:
             - name: ASCVD_URL
-              value: <<ASCVD_SERVICE_URL>>
+              value: http://ascvd:8080

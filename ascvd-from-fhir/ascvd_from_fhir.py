@@ -5,8 +5,8 @@ from datetime import date
 from dateutil.parser import parse
 from flask import Flask, request
 
-# docker build . -t atclark/ascvd_from_fhir:0.0.1
-# docker push atclark/ascvd_from_fhir:0.0.1
+# docker build . -t alvearie/ascvd_from_fhir:0.0.1
+# docker push alvearie/ascvd_from_fhir:0.0.1
 # kubectl apply -f kubernetes.yml
 
 app = Flask(__name__)
