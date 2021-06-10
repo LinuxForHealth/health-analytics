@@ -3,9 +3,9 @@ entries:
   ascvd:
   - apiVersion: v2
     appVersion: 0.0.1
-    created: "2021-06-09T15:37:11.649934-05:00"
+    created: "2021-06-10T07:09:00.552543-05:00"
     description: A Helm Chart to deploy the Alvearie Atherosclerotic Cardiovascular Disease (ASCVD) service.  This service will calculate the risk of cardiovascular disease based on a small set of input parameters.
-    digest: 9db3de914b606846552e6b038cb2247d88f311d0e320d4600b9a596bd26b34e2
+    digest: 972e5548a731c828b8f7c84c28b898e36b11bbae0c2650ca52e6f86765c3b50d
     home: https://github.com/Alvearie/health-analytics/tree/main/ascvd
     keywords:
     - ibm
@@ -17,14 +17,14 @@ entries:
     name: ascvd
     type: application
     urls:
-    - ascvd.tgz
+    - ascvd-0.1.0.tgz
     version: 0.1.0
   ascvd-from-fhir:
   - apiVersion: v2
     appVersion: 0.0.1
-    created: "2021-06-09T15:37:11.649501-05:00"
+    created: "2021-06-10T07:09:00.55371-05:00"
     description: A Helm Chart to deploy the Alvearie Atherosclerotic Cardiovascular Disease (ASCVD) data extraction (from FHIR) service.
-    digest: 1d2950847cfa43f7a0ccc9dec2a8cf4afdd3f162be9a2510bb25413d03588603
+    digest: 73456f010578b44c5f21570286184a67ba494ee9fe80448dd50e59896d97b59f
     home: https://github.com/Alvearie/health-analytics/tree/main/ascvd-from-fhir
     keywords:
     - ibm
@@ -36,6 +36,6 @@ entries:
     name: ascvd-from-fhir
     type: application
     urls:
-    - ascvd-from-fhir.tgz
+    - ascvd-from-fhir-0.1.0.tgz
     version: 0.1.0
-generated: "2021-06-09T15:37:11.648693-05:00"
+generated: "2021-06-10T07:09:00.552013-05:00"
