@@ -12,11 +12,22 @@ service:
   type: ClusterIP
   port: 5000
 
+enabled: true
 
-ingress:
-  enabled: true
-  class: 
+global:
+  ingress:
+    enabled: true
+    class: BAD
          # IBM: public-iks-k8s-nginx
          # Azure: addon-http-application-routing
          # AWS: nginx
-  host:
+    subdomain: BAD 
+
+ingress:
+  enabled: true
+  class: BAD
+       # IBM: public-iks-k8s-nginx
+       # Azure: addon-http-application-routing
+       # AWS: nginx
+  subdomain: BAD
+

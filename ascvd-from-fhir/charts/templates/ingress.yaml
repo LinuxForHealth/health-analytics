@@ -1,4 +1,5 @@
-{{- if .Values.ingress.enabled -}}
+{{- if .Values.enabled -}}
+{{- if .Values.global.ingress.enabled -}}
 {{- $ingressPort := .Values.service.port -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -8,10 +9,10 @@ metadata:
   labels:
     {{- include "ascvd-from-fhir.labels" . | nindent 4 }}
   annotations:
-    kubernetes.io/ingress.class: {{ .Values.ingress.class }}
+    kubernetes.io/ingress.class: {{ .Values.global.ingress.class | default .Values.ingress.class }}
 spec:
   rules:
-    - host: {{ .Values.ingress.host }}
+    - host: {{ .Release.Namespace }}-{{ .Release.Name }}-ascvd-from-fhir.{{ .Values.global.ingress.subdomain | default .Values.ingress.subdomain }}
       http:
         paths:
           - path: /
@@ -21,4 +22,5 @@ spec:
                 name: ascvd-from-fhir
                 port: 
                   number: {{ $ingressPort }}
+{{- end }}
 {{- end }}
