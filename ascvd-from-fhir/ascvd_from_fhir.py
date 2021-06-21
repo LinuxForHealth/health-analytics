@@ -249,8 +249,10 @@ def calculate_ascvd(ascvd_data):
     # Call ASCVD 
     resp = requests.get(ascvd_url, params=ascvd_params, verify=False)
     ascvd_output=resp.json()
-    return ascvd_output['tenYearRisk']
+    if 'tenYearRisk' in ascvd_output:
+      return ascvd_output['tenYearRisk']
 
+    return None
 
 def build_ascvd_risk_assessment(ascvd_data, ten_year_risk):
     patient_id = None
@@ -336,13 +338,15 @@ def update_bundle_with_ascvd_risk_assessment():
     ascvd_data = extract_ascvd_input_from_fhir()
     ten_year_risk = calculate_ascvd(ascvd_data)
 
-    # Build RiskAssessment FHIR resource
-    riskAssessment = build_ascvd_risk_assessment(ascvd_data, ten_year_risk)
-
     # Insert ASCVD RiskAssessment into original bundle and return
     request_data = request.data.decode("utf-8")
     request_json = json.loads(request_data)
-    resource = {}
-    resource['resource'] = riskAssessment
-    request_json['entry'].append(resource)
+
+    if ten_year_risk != None:
+      # Build RiskAssessment FHIR resource
+      riskAssessment = build_ascvd_risk_assessment(ascvd_data, ten_year_risk)
+      resource = {}
+      resource['resource'] = riskAssessment
+      request_json['entry'].append(resource)
+
     return request_json

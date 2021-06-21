@@ -12,8 +12,6 @@ service:
   type: ClusterIP
   port: 5000
 
-ascvd:
-  url: http://ascvd:8080/
 
 ingress:
   enabled: true
