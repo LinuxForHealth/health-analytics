@@ -17,17 +17,16 @@ enabled: true
 global:
   ingress:
     enabled: true
-    class: BAD
+    class: REQUIRED-NOT-USED
          # IBM: public-iks-k8s-nginx
          # Azure: addon-http-application-routing
          # AWS: nginx
-    subdomain: BAD 
+    subdomain: REQUIRED-NOT-USED
 
 ingress:
   enabled: true
-  class: BAD
+  class: REQUIRED-NOT-USED
        # IBM: public-iks-k8s-nginx
        # Azure: addon-http-application-routing
        # AWS: nginx
-  subdomain: BAD
-
+  subdomain: REQUIRED-NOT-USED
