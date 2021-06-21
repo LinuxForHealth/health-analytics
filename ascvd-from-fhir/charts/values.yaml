@@ -7,13 +7,11 @@ replicaCount: 1
 image:
   repository: alvearie/ascvd-from-fhir
   pullPolicy: Always
-  tag: 0.0.1
+  tag: 0.0.2
 service:
   type: ClusterIP
   port: 5000
 
-ascvd:
-  url: http://ascvd:8080/
 
 ingress:
   enabled: true

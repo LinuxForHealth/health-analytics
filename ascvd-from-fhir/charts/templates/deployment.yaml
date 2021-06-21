@@ -30,4 +30,4 @@ spec:
             protocol: TCP
         env:
         - name: ASCVD_URL
-          value: {{ .Values.ascvd.url}}
+          value: http://{{ .Release.Name }}-ascvd:8080
