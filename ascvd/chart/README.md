@@ -17,7 +17,7 @@ Git clone this repository and `cd` into this directory.
 
 ```bash
 git clone https://github.com/Alvearie/health-analytics.git
-cd health-analytics/ascvd/charts/
+cd health-analytics/ascvd/chart/
 ```
 
 ### Install the Chart

@@ -69,6 +69,6 @@ Create the url ASCVD endpoint to use
 {{- if .Values.ascvd_url }}
 {{- .Values.ascvd_url }}
 {{- else }}
-http://{{- .Release.Name }}-ascvd:8080
+http://{{ .Release.Namespace }}-{{- .Release.Name }}-ascvd:8080
 {{- end }}
 {{- end }}

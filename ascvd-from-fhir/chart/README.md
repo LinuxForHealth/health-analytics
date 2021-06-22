@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This [Helm](https://github.com/kubernetes/helm) chart installs an instance of the Alvearie ASCVD From FHIR service in a Kubernetes cluster.
+This [Helm](https://github.com/kubernetes/helm) chart installs an instance of the Alvearie [ASCVD From FHIR service](https://github.com/Alvearie/health-analytics/tree/main/ascvd-from-fhir) in a Kubernetes cluster.
 
 ## Pre-Requisites
 
