@@ -13,6 +13,7 @@ service:
   port: 5000
 
 enabled: true
+# ascvd_url:
 
 global:
   ingress:

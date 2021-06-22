@@ -61,7 +61,6 @@ Create the name of the service account to use
 {{- end }}
 {{- end }}
 
-
 {{/*
 Create the url ASCVD endpoint to use
 */}}
@@ -69,6 +68,6 @@ Create the url ASCVD endpoint to use
 {{- if .Values.ascvd_url }}
 {{- .Values.ascvd_url }}
 {{- else }}
-http://{{ .Release.Namespace }}-{{- .Release.Name }}-ascvd:8080
+{{- printf "http://%s-%s-ascvd:" .Release.Namespace .Release.Name }}{{index .Values.service.port }}
 {{- end }}
 {{- end }}
