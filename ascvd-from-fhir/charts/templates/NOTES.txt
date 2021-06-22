@@ -11,6 +11,6 @@ The ASCVD-From-Fhir service can be accessed from within your cluster at the foll
 
   {{ include "ascvd-from-fhir.fullname" .}}.{{ .Release.Namespace }}.svc.{{ .Values.clusterDomain}}
  
-{{- if .Values.ingress.enabled }}
-ASCVD-From-Fhir Ingress was deployed to:  https://{{ .Values.ingress.host }}
+{{- if .Values.global.ingress.enabled | default .Values.ingress.enabled }}
+ASCVD-From-Fhir Ingress was deployed to:  https://{{ .Release.Namespace }}-{{ .Release.Name }}-ascvd-from-fhir.{{ .Values.global.ingress.subdomain | default .Values.ingress.subdomain }}
 {{- end }}

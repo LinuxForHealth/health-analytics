@@ -60,3 +60,15 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+
+{{/*
+Create the url ASCVD endpoint to use
+*/}}
+{{- define "ascvd-from-fhir.ascvd_url" -}}
+{{- if .Values.ascvd_url }}
+{{- .Values.ascvd_url }}
+{{- else }}
+http://{{- .Release.Name }}-ascvd:8080
+{{- end }}
+{{- end }}

@@ -1,5 +1,5 @@
 {{- if .Values.enabled -}}
-{{- if .Values.global.ingress.enabled -}}
+{{- if .Values.global.ingress.enabled | default .Values.ingress.enabled -}}
 {{- $ingressPort := .Values.service.port -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -19,7 +19,7 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: ascvd-from-fhir
+                name: {{ .Release.Namespace }}-{{ .Release.Name }}-ascvd-from-fhir
                 port: 
                   number: {{ $ingressPort }}
 {{- end }}
