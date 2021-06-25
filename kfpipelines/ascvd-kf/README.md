@@ -35,7 +35,7 @@ This will create `simpleascvdpipeline.yaml` which is a yaml definition for the p
 
 In the kubeflow dashboard, choose Pipelines and +Upload pipeline.  Pick the `simpleascvdpipeline.yaml` file from the previous step.  Then, choose Experiments and New experiment.  Fill in a name and description and pick next.  You can configure a run by picking a pipeline (the one you just uploaded) and providing a run name.
 
-Finally, you will need to provide the Run Parameters for this pipeline before selecting `Start`.  Note that if you deployed the Alvearie Health Patterns Clinical Ingestion flow, then many of these urls are provided after the helm install. The required run parameters are:
+Finally, you will need to provide the Run Parameters for this pipeline before selecting `Start`.  Note that if you deployed the Alvearie Health Patterns Clinical Ingestion flow, then of this information is provided after the helm install. The required run parameters are:
 
 #### fhirEndpoint
     Full url for the FHIR server containing the patient data
