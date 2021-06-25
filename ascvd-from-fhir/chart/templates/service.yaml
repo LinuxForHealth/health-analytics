@@ -10,6 +10,6 @@ spec:
     - port: {{ .Values.service.port }}
       targetPort: http
       protocol: TCP
-      name: ascvd-from-fhir
+      name: {{ .Release.Namespace }}-{{ .Release.Name }}-ascvd-from-fhir
   selector:
     {{- include "ascvd-from-fhir.selectorLabels" . | nindent 4 }}

@@ -17,7 +17,7 @@ Git clone this repository and `cd` into this directory.
 
 ```bash
 git clone https://github.com/Alvearie/health-analytics.git
-cd health-analytics/ascvd/charts/
+cd health-analytics/ascvd/chart/
 ```
 
 ### Install the Chart
@@ -31,10 +31,10 @@ helm install ascvd .
 This will install ASCVD, but it will not be exposed outside the cluster. To add an ingress for ASCVD, use:
 
 ```bash
-helm install ascvd . --set ingress.enabled=true  --set ingress.class=<<INGRESS_CLASS>> --set ingress.host=<<HOSTNAME>>
+helm install ascvd . --set ingress.enabled=true  --set ingress.class=<<INGRESS_CLASS>> --set ingress.subdomain=<<INGRESS_SUBDOMAIN>>
 ```
 
-where `<<INGRESS_CLASS>>` is the ingress class used by your cloud environment, and `<<HOSTNAME>>` is the configured hostname you wish to use for your ASCVD ingress.
+where `<<INGRESS_CLASS>>` is the ingress class used by your cloud environment, and `<<INGRESS_SUBDOMAIN>>` is the configured subdomain you wish to use for your ASCVD ingress.
 
 ### Using the Chart
 

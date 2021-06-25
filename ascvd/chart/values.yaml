@@ -12,10 +12,21 @@ service:
   type: ClusterIP
   port: 8080
 
-ingress:
-  enabled: false
-  class:
+enabled: true
+
+global:
+  ingress:
+    enabled:
+    class:
          # IBM: public-iks-k8s-nginx
          # Azure: addon-http-application-routing
          # AWS: nginx
-  host:
+    subdomain:
+
+ingress:
+  enabled: false
+  class:
+       # IBM: public-iks-k8s-nginx
+       # Azure: addon-http-application-routing
+       # AWS: nginx
+  subdomain:

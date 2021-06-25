@@ -1,8 +1,8 @@
-# ASCVD Service Helm Chart
+# ASCVD From FHIR Service Helm Chart
 
 ## Introduction
 
-This [Helm](https://github.com/kubernetes/helm) chart installs an instance of the [Alvearie De-Identification](https://github.com/Alvearie/de-identification) service in a Kubernetes cluster.
+This [Helm](https://github.com/kubernetes/helm) chart installs an instance of the Alvearie [ASCVD From FHIR service](https://github.com/Alvearie/health-analytics/tree/main/ascvd-from-fhir) in a Kubernetes cluster.
 
 ## Pre-Requisites
 
@@ -17,7 +17,7 @@ Git clone this repository and `cd` into this directory.
 
 ```bash
 git clone https://github.com/Alvearie/health-analytics.git
-cd health-analytics/ascvd-from-fhir/charts/
+cd health-analytics/ascvd-from-fhir/chart/
 ```
 
 ### Install the Chart
@@ -25,9 +25,11 @@ cd health-analytics/ascvd-from-fhir/charts/
 Install the helm chart with a release name `ascvd-from-fhir`:
 
 ```bash
-helm install ascvd-from-fhir . --set ingress.enabled=true  --set ingress.class=<<INGRESS_CLASS>> --set ingress.host=<<HOSTNAME>>
+helm install ascvd-from-fhir . --set ingress.enabled=true  --set ingress.class=<<INGRESS_CLASS>> --set ingress.subdomain=<<INGRESS_SUBDOMAIN>>
 ```
-where `<<INGRESS_CLASS>>` is the ingress class used by your cloud environment, and `<<HOSTNAME>>` is the configured hostname you wish to use for your ASCVD ingress.
+
+where `<<INGRESS_CLASS>>` is the ingress class used by your cloud environment, and `<<INGRESS_SUBDOMAIN>>` is the configured subdomain you wish to use for your ASCVD From FHIR ingress.
+
 ### Using the Chart
 
 See [ASCVD-From-Fhir](../README.md) for information about calling the deployed API.

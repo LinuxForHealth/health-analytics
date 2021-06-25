@@ -9,8 +9,6 @@ spec:
   selector:
     matchLabels:
       {{- include "ascvd-from-fhir.selectorLabels" . | nindent 6 }}
-
-
   template:
     metadata:
     {{- with .Values.podAnnotations }}
@@ -30,4 +28,4 @@ spec:
             protocol: TCP
         env:
         - name: ASCVD_URL
-          value: http://{{ .Release.Name }}-ascvd:8080
+          value: {{ include "ascvd-from-fhir.ascvd_url" . }}
