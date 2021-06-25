@@ -1,13 +1,13 @@
 # ASCVD and Kubeflow Pipelines
 
 This folder contains an example of a kubeflow pipeline that calculates an analytic result
-for a patient whose data is pulled from a Fhir server. The analytic is known as ASCVD (a measure of cardiovascular risk).  The kubeflow pipeline will take a Fhir patient identifier, get all the data for that patient, and then call off to a microservice that can extract the proper data and calculate the risk value.
+for a patient whose data is pulled from a FHIR server. The analytic is known as ASCVD (a measure of cardiovascular risk).  The kubeflow pipeline will take a FHIR patient identifier, get all the data for that patient, and then call off to a microservice that can extract the proper data and calculate the risk value.
 
 ## Prerequisites
-- an accessible kubeflow deployment
-- an accessible fhir server
+- an accessible kubeflow deployment (https://www.kubeflow.org/)
+- an accessible FHIR server (https://ibm.github.io/FHIR)
 - an accessible ASCVD microservice deployment that includes both
-data extraction and ascvd calculation https://github.com/Alvearie/health-analytics/tree/main/ascvd-from-fhir
+data extraction and ascvd calculation https://github.com/Alvearie/health-analytics/tree/main/ascvd-from-fhir and https://github.com/Alvearie/health-analytics/tree/main/ascvd
 - installed kubeflow pipelines sdk (`pip install kfp-tekton`)
 - clone of the Health Analytics repository (cd to the ascvd-kf directory)
     https://github.com/Alvearie/health-analytics
@@ -35,27 +35,27 @@ This will create `simpleascvdpipeline.yaml` which is a yaml definition for the p
 
 In the kubeflow dashboard, choose Pipelines and +Upload pipeline.  Pick the `simpleascvdpipeline.yaml` file from the previous step.  Then, choose Experiments and New experiment.  Fill in a name and description and pick next.  You can configure a run by picking a pipeline (the one you just uploaded) and providing a run name.
 
-Finally, you will need to provide the Run Parameters for this pipeline before selecting `Start`.  The required run parameters are:
+Finally, you will need to provide the Run Parameters for this pipeline before selecting `Start`.  Note that if you deployed the Alvearie Health Patterns Clinical Ingestion flow, then many of these urls are provided after the helm install. The required run parameters are:
 
 #### fhirEndpoint
-    Full url for the fhir server containing the patient data
-    Example: https://dlr-ingestion-fhir.wh-health-patterns.dev.watson-health.ibm.com/fhir-server/api/v4
+    Full url for the FHIR server containing the patient data
+    Example: https://<<fhir-external-url>>/fhir-server/api/v4
 
 #### username
-    A fhir server user
+    A FHIR server user
     Example: fhiruser
 
 #### password
-    The configured password for the username fhir user
-    Example: mypassw0rd
+    The configured password for the username fhiruser
+    Example: yourpassw0rd
 
 #### patientid
-    The id of the patient as it appears in fhir
+    The id of the patient as it appears in FHIR
     Example: 17a390cc3f6-8d67b65d-b558-4fd4-a2c0-4d41624e0773
 
 #### ascvdEndpoint
     The full url for the ascvd microservice
-    Example: https://dlr-ascvd-from-fhir.wh-health-patterns.dev.watson-health.ibm.com/fhir
+    Example: https://<<ascvd-from-fhir-external-url>>/fhir
 
 
 ### Variation 2: Kubeflow pipelines with a microservice wrapper
@@ -83,7 +83,7 @@ This variation will utilize a wrapper microservice to directly run a kubeflow pi
     ```
 {
     "patientid": "17a390cc3f6-8d67b65d-b558-4fd4-a2c0-4d41624e0773",
-    "sessioncookie": "authservice_session=MTYyNDQ1MTgxNHxOd3dBTkZsSFF6UkZUVkpOUTBoV1IxbFdTalpXTkZsRk1sZFZNMVJWU1RjMVZGRk9WRlpUV0VWRU4xZFVObGhKUkZCSFFsUk5WMEU9fM9wEF7nSHB8Te4RjAAeFbF3auKEbnAySXNWQvC3nMu7",
+    "sessioncookie": "authservice_session=<<your cookie here>>",
     "experimentname": "Demo0623C"
 }
     ```
@@ -101,7 +101,7 @@ This variation will utilize a wrapper microservice to directly run a kubeflow pi
     ```
   {
     "runid": "95912c64-7e46-4133-8fa7-21aa772ffe48",
-    "sessioncookie": "authservice_session=MTYyNDQ1MTgxNHxOd3dBTkZsSFF6UkZUVkpOUTBoV1IxbFdTalpXTkZsRk1sZFZNMVJWU1RjMVZGRk9WRlpUV0VWRU4xZFVObGhKUkZCSFFsUk5WMEU9fM9wEF7nSHB8Te4RjAAeFbF3auKEbnAySXNWQvC3nMu7"
+    "sessioncookie": "authservice_session=<<your cookie here>>"
   }
     ```
 
@@ -114,12 +114,12 @@ Defines the process used to build the docker image
 Build the docker image providing a `GROUP` and `TAG`
 
 `docker build -t <<GROUP>>/ascvd-kf:<<TAG>> .`
-    Example: `docker build -t dlranum/ascvd-kf:0.1.0`
+    Example: `docker build -t usergroup/ascvd-kf:0.1.0`
 
 Push the docker image to the repository
 
 `docker push <<GROUP>>/ascvd-kf:<<TAG>>`
-    Example: `docker push dlranum/ascvd-kf:0.1.0`
+    Example: `docker push usergroup/ascvd-kf:0.1.0`
 
 Once your image is pushed to the repository, you can substitute it in the kubernetes deployment yaml file (line 50).
 
