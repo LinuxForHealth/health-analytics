@@ -68,6 +68,6 @@ Create the url ASCVD endpoint to use
 {{- if .Values.ascvd_url }}
 {{- .Values.ascvd_url }}
 {{- else }}
-{{- printf "http://%s-%s-ascvd:" .Release.Namespace .Release.Name }}{{index .Values.service.port }}
+{{- printf "http://%s-ascvd:8080" .Release.Name }}
 {{- end }}
 {{- end }}
