@@ -194,7 +194,8 @@ def extract_ascvd_input_data(resource_array):
     data['race'] = extract_race(resource_array)
 
     observations = extract_resourceType(resource_array, 'Observation')
-    sorted_observations = sorted(observations, key=lambda o: parse(o['effectiveDateTime'], default=datetime(1900, 1, 1)), reverse = True)
+    sorted_observations = sorted(observations, key=lambda o: parse(o['effectiveDateTime']) if 'effectiveDateTime' in o else '', reverse = True)
+
 
     # total_cholesterol
     data['total_cholesterol'] = extract_cholesterol(sorted_observations)
