@@ -14,5 +14,5 @@ The ASCVD service can be accessed from within your cluster at the following loca
   {{ include "ascvd.fullname" .}}.{{ .Release.Namespace }}.svc.{{ .Values.clusterDomain}}
 
 {{- if .Values.global.ingress.enabled | default .Values.ingress.enabled }}
-ASCVD Ingress was deployed to:  https://{{ .Release.Namespace }}-{{ .Release.Name }}-ascvd.{{ .Values.global.ingress.subdomain | default .Values.ingress.subdomain }}
+ASCVD Ingress was deployed to:  https://{{ include "ascvd.fullname" . }}.{{ .Values.global.ingress.subdomain | default .Values.ingress.subdomain }}
 {{- end }}

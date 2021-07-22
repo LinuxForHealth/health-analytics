@@ -10,6 +10,6 @@ spec:
     - port: {{ .Values.service.port }}
       targetPort: http
       protocol: TCP
-      name: {{ .Release.Name }}-ascvd
+      name: {{ include "ascvd.fullname" . }}
   selector:
     {{- include "ascvd.selectorLabels" . | nindent 4 }}
