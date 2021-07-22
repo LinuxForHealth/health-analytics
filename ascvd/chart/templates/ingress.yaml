@@ -4,22 +4,24 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ .Release.Name }}-ascvd-ingress
+  name: {{ include "ascvd.fullname" . }}
   namespace: {{ .Release.Namespace }}
   labels:
     {{- include "ascvd.labels" . | nindent 4 }}
   annotations:
+    nginx.ingress.kubernetes.io/use-regex: 'true'
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
     kubernetes.io/ingress.class: {{ .Values.global.ingress.class | default .Values.ingress.class }}
 spec:
   rules:
-    - host: {{ .Release.Namespace }}-{{ .Release.Name }}-ascvd.{{ .Values.global.ingress.subdomain | default .Values.ingress.subdomain }} 
+    - host: {{ .Values.global.ingress.hostname | default .Values.ingress.hostname }}
       http:
         paths:
-          - path: /
+          - path: /{{ .Chart.Name }}(.*)
             pathType: ImplementationSpecific
             backend:
               service:
-                name: {{ .Release.Namespace }}-{{ .Release.Name }}-ascvd
+                name: {{ include "ascvd.fullname" . }}
                 port: 
                   number: {{ $ingressPort }}
 {{- end }}
