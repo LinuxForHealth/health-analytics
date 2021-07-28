@@ -18,13 +18,10 @@ kind: Ingress
 metadata:
   name: ascvd-kf-ingress
   annotations:
-    kubernetes.io/ingress.class: <<ingress class>>
-         # IBM: public-iks-k8s-nginx
-         # Azure: addon-http-application-routing
-         # AWS: nginx
+    kubernetes.io/ingress.class: public-iks-k8s-nginx
 spec:
   rules:
-    - host: <<ingress host url>>
+    - host: 
       http:
         paths:
           - path: /
