@@ -18,10 +18,7 @@ kind: Ingress
 metadata:
   name: ascvd-from-fhir-ingress
   annotations:
-    kubernetes.io/ingress.class: 
-         # IBM: public-iks-k8s-nginx
-         # Azure: addon-http-application-routing
-         # AWS: nginx
+    kubernetes.io/ingress.class: public-iks-k8s-nginx
 spec:
   rules:
     - host: 
