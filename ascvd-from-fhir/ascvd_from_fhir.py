@@ -264,7 +264,7 @@ def build_ascvd_risk_assessment(ascvd_data, ten_year_risk):
         if 'patient_id' in item:
             patient_id = item['patient_id']
             if (patient_id.startswith("Patient/")):
-                referenced_resources.add(patient_id[9:])
+                referenced_resources.add(patient_id[patient_id.rfind("/") + 1 :])
             else:
                 referenced_resources.add(patient_id)
         
