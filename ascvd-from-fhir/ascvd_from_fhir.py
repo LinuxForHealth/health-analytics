@@ -1,11 +1,8 @@
 import json
 import os
-import pyarrow.parquet as pq
 import requests
 import pandas
 import numpy
-from pyspark.sql import *
-from pyspark.sql.functions import explode
 from datetime import date
 from dateutil.parser import parse
 from flask import Flask, request
@@ -40,7 +37,3 @@ def update_bundle_with_ascvd_risk_assessment():
       request_json['entry'].append(resource)
 
     return request_json
-
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8080))
-    app.run(host='0.0.0.0', port=port)
