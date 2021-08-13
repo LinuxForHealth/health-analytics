@@ -1,8 +1,6 @@
 import json
 import os
 import requests
-import pandas
-import numpy
 from datetime import date
 from dateutil.parser import parse
 from flask import Flask, request
