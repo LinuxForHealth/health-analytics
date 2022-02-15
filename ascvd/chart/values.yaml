@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: alvearie/ascvd
+  repository: quay.io/alvearie/ascvd
   pullPolicy: Always
   tag: 0.0.1
 service:

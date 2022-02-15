@@ -1,8 +1,8 @@
 import json
 import os
 import requests
-import pandas
-import numpy
+#import pandas
+#import numpy
 from datetime import date
 from dateutil.parser import parse
 
@@ -37,7 +37,7 @@ def extract_conditions(resource_array):
                     for coding in code['coding']:
                         if 'display' in coding:
                             conditions.append(coding['display'])
-    
+
     return conditions
 
 def extract_gender(resource_array):
@@ -150,7 +150,7 @@ def extract_bp_treated(sorted_observations):
     return bp_treated # Assuming False for now
 
 
-    
+
 def get_resources_from_request(request_data):
     resource_array = []
     try:
@@ -178,7 +178,7 @@ def get_resources_from_request(request_data):
 
 def extract_ascvd_input_data(resource_array):
     data = {}
-    
+
     # Age
     data['age'] = extract_age(resource_array)
 
@@ -206,10 +206,10 @@ def extract_ascvd_input_data(resource_array):
 
     # isSmoker
     data['is_smoker'] = extract_is_smoker(sorted_observations)
-        
+
     # bpTreated
     data['bp_treated'] = extract_bp_treated(sorted_observations)
-    
+
     return data
 
 def calculate_ascvd(ascvd_data):
@@ -220,29 +220,29 @@ def calculate_ascvd(ascvd_data):
 
     if ('value' in ascvd_data['gender']):
         ascvd_params['male'] = ascvd_data['gender']['value']=='male'
-    
+
     if ('value' in ascvd_data['race']):
         ascvd_params['africanAmerican'] = ascvd_data['race']['value']=='africanAmerican'
-    
+
     if ('value' in ascvd_data['bp_treated']):
         ascvd_params['bpTreated'] = ascvd_data['bp_treated']['value']
-    
+
     if ('value' in ascvd_data['is_smoker']):
         ascvd_params['currentSmoker'] = ascvd_data['is_smoker']['value']
-    
+
     if ('value' in ascvd_data['diabetic']):
         ascvd_params['diabetic'] = ascvd_data['diabetic']['value']
-    
+
     if ('value' in ascvd_data['total_cholesterol']):
         ascvd_params['totalCholesterol'] = ascvd_data['total_cholesterol']['value']
-    
+
     if ('value' in ascvd_data['hdl']):
         ascvd_params['hdlCholesterol'] = ascvd_data['hdl']['value']
-    
+
     if ('value' in ascvd_data['systolic_bp']):
         ascvd_params['systolicBp'] = ascvd_data['systolic_bp']['value']
 
-    # Call ASCVD 
+    # Call ASCVD
     resp = requests.get(ascvd_url, params=ascvd_params, verify=False)
     ascvd_output=resp.json()
     if 'tenYearRisk' in ascvd_output:
@@ -262,10 +262,10 @@ def build_ascvd_risk_assessment(ascvd_data, ten_year_risk):
                 referenced_resources.add(patient_id[patient_id.rfind("/") + 1 :])
             else:
                 referenced_resources.add(patient_id)
-        
+
         if 'resource_id' in item:
             referenced_resources.add(item['resource_id'])
-            
+
     fhirResp = {}
     fhirResp['resourceType'] = 'RiskAssessment'
     fhirResp['id'] = 'cardiac'
@@ -294,9 +294,9 @@ def build_ascvd_risk_assessment(ascvd_data, ten_year_risk):
             ref['reference'] = referenced_resource
         else:
             ref['reference'] = "urn:uuid:"+referenced_resource
-        
+
         fhirResp['basis'].append(ref)
-    
+
     fhirResp['prediction'] = []
     prediction = {}
     outcome = {}
