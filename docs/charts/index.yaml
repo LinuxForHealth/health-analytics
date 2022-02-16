@@ -3,12 +3,12 @@ entries:
   ascvd:
   - apiVersion: v2
     appVersion: 0.0.1
-    created: "2022-02-15T10:43:50.031063-06:00"
+    created: "2022-02-16T08:46:00.026304-06:00"
     description: A Helm Chart to deploy the Alvearie Atherosclerotic Cardiovascular
       Disease (ASCVD) service.  This service will calculate the risk of cardiovascular
       disease based on a small set of input parameters.
-    digest: 14272e12e5ae6787c41c76adb03b3a823f7bcef983d9d06e1938454ce9781b82
-    home: https://github.com/LinuxForHealth/health-analytics/tree/main/ascvd
+    digest: 41e684509a75b9c65e9640b789d2082b79e41f15a29b9117f9bc19c7fe3d3925
+    home: https://github.com/Alvearie/health-analytics/tree/main/ascvd
     keywords:
     - ibm
     - alvearie
@@ -24,11 +24,11 @@ entries:
   ascvd-from-fhir:
   - apiVersion: v2
     appVersion: 0.0.1
-    created: "2022-02-15T10:43:50.034504-06:00"
+    created: "2022-02-16T08:46:00.026842-06:00"
     description: A Helm Chart to deploy the Alvearie Atherosclerotic Cardiovascular
       Disease (ASCVD) data extraction (from FHIR) service.
     digest: 17cda9cd0cd9e0a2ec39d41c86ae3c07d4881a69ef0fad0c03ded7cdfabbe59a
-    home: https://github.com/LinuxForHealth/health-analytics/tree/main/ascvd-from-fhir
+    home: https://github.com/Alvearie/health-analytics/tree/main/ascvd-from-fhir
     keywords:
     - ibm
     - alvearie
@@ -41,4 +41,4 @@ entries:
     urls:
     - ascvd-from-fhir-0.1.0.tgz
     version: 0.1.0
-generated: "2022-02-15T10:43:50.029678-06:00"
+generated: "2022-02-16T08:46:00.02425-06:00"

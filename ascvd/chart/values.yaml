@@ -7,7 +7,7 @@ replicaCount: 1
 image:
   repository: quay.io/alvearie/ascvd
   pullPolicy: Always
-  tag: 0.0.1
+  tag: 0.0.4
 service:
   type: ClusterIP
   port: 8080
