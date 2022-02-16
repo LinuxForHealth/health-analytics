@@ -1,6 +1,6 @@
 apiVersion: v2
 name: ascvd-from-fhir
-description: A Helm Chart to deploy the Alvearie Atherosclerotic Cardiovascular Disease (ASCVD) data extraction (from FHIR) service.
+description: A Helm Chart to deploy the Atherosclerotic Cardiovascular Disease (ASCVD) data extraction (from FHIR) service.
 
 # A chart can be either an 'application' or a 'library' chart.
 #
@@ -23,12 +23,9 @@ version: 0.1.0
 appVersion: 0.0.1
 
 keywords:
-  - ibm
-  - alvearie
   - ascvd
 
-home: https://github.com/Alvearie/health-analytics/tree/main/ascvd-from-fhir
-
+home: https://github.com/LinuxForHealth/health-analytics/tree/main/ascvd-from-fhir
 maintainers:
-  - name: Adam T. Clark
-    email: atclark@us.ibm.com
+  - name: David Ranum
+    email: dlranum@us.ibm.com

@@ -16,7 +16,7 @@ This repository contains API's that will help process FHIR resources to extract 
 
 Check out the source and build the docker image:
 
-1. `git clone https://github.com/Alvearie/health-analytics.git`
+1. `git clone https://github.com/LinuxForHealth/health-analytics.git`
 1. `cd health-analytics/ascvd-from-fhir`
 1. `docker build . -t <<GROUP>>/ascvd-from-fhir:1.0-SNAPSHOT`
 1. `docker push <<GROUP>>/ascvd-from-fhir:1.0-SNAPSHOT`

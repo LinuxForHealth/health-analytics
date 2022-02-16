@@ -21,7 +21,7 @@ metadata:
     kubernetes.io/ingress.class: public-iks-k8s-nginx
 spec:
   rules:
-    - host: 
+    - host:
       http:
         paths:
           - path: /
@@ -44,7 +44,7 @@ spec:
     spec:
       containers:
         - name: ascvd-from-fhir
-          image: docker.io/alvearie/ascvd_from_fhir:0.0.1
+          image: quay.io/alvearie/ascvd_from_fhir:0.0.3
           imagePullPolicy: Always
           env:
             - name: ASCVD_URL
