@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This [Helm](https://github.com/kubernetes/helm) chart installs an instance of the [Alvearie ASCVD](https://github.com/Alvearie/health-analytics/tree/main/ascvd) service in a Kubernetes cluster.
+This [Helm](https://github.com/kubernetes/helm) chart installs an instance of the [ASCVD](https://github.com/LinuxForHealth/health-analytics/tree/main/ascvd) service in a Kubernetes cluster.
 
 ## Pre-Requisites
 
@@ -16,7 +16,7 @@ This [Helm](https://github.com/kubernetes/helm) chart installs an instance of th
 Git clone this repository and `cd` into this directory.
 
 ```bash
-git clone https://github.com/Alvearie/health-analytics.git
+git clone https://github.com/LinuxForHealth/health-analytics.git
 cd health-analytics/ascvd/chart/
 ```
 
@@ -50,9 +50,9 @@ helm delete ascvd
 
 ## Contributing
 
-Feel free to contribute by making a [pull request](https://github.com/Alvearie/health-analytics/pull/new/master).
+Feel free to contribute by making a [pull request](https://github.com/LinuxForHealth/health-analytics/pulls).
 
-Please review the [Contributing Guide](https://github.com/Alvearie/health-analytics/blob/main/CONTRIBUTING.md) for information on how to get started contributing to the project.
+Please review the [Contributing Guide](https://github.com/LinuxForHealth/health-analytics/blob/main/CONTRIBUTING.md) for information on how to get started contributing to the project.
 
 ## License
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)

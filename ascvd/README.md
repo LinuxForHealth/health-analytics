@@ -1,6 +1,6 @@
 # Million Hearts ASCVD Model
 
-This project contains an implementation of the model used by [CMS](https://innovation.cms.gov/innovation-models/million-hearts-cvdrrm) to try and reduce patient cardiovascular risk with a monetary incentive for providers.  
+This project contains an implementation of the model used by [CMS](https://innovation.cms.gov/innovation-models/million-hearts-cvdrrm) to try and reduce patient cardiovascular risk with a monetary incentive for providers. 
 
 ## Technical details
 
@@ -36,7 +36,7 @@ This will return a JSON object that includes calculation for the `tenYearRisk` o
 You can run this model from a docker container:
 
 ```
-docker run -p 8080:8080 alvearie/ascvd:0.0.1
+docker run -p 8080:8080 quay.io/alvearie/ascvd:0.0.4
 ```
 
 Once the image is deployed, you can access the ASCVD API using a URI:
@@ -53,7 +53,7 @@ totalCholesterol=<<TOTAL_CHOLESTEROL>>\
 &diabetic=<<DIABETIC>>"
 ```
 
-This will deploy and run the Alvearie build of ASCVD, but you can optionally choose to rebuild/push your own container using:
+This will deploy and run the a build of ASCVD, but you can optionally choose to rebuild/push your own container using:
 
 ```
 mvn package
@@ -86,7 +86,7 @@ Then deploying the generated kubernetes yaml file:
 kubectl apply -f target/kubernetes/kubernetes.yml
 ```
 
-Once deployed you can identify the external IP of your service using: 
+Once deployed you can identify the external IP of your service using:
 
 ```
 kubectl get services ascvd
@@ -106,7 +106,7 @@ totalCholesterol=<<TOTAL_CHOLESTEROL>>\
 &diabetic=<<DIABETIC>>"
 ```
 
-This will deploy and run the Alvearie build of ASCVD, but you can optionally choose to rebuild/push your own container using:
+This will deploy and run a build of ASCVD, but you can optionally choose to rebuild/push your own container using:
 
 ```
 mvn package
@@ -127,8 +127,8 @@ You can run this model in Kubeflow using a ContainerOp:
 ```
     ascvd_containerop = dsl.ContainerOp(
         name='ascvd',
-        image='alvearie/ascvd-api:0.0.1',
-        arguments=["-outputPath", outputPath, 
+        image='quay.io/alvearie/ascvd:0.0.4',
+        arguments=["-outputPath", outputPath,
                    "-isMale", isMale,
                    "-isAfricanAmerican", isAfricanAmerican,
                    "-age", age,

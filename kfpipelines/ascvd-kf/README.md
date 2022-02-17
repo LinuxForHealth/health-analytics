@@ -7,10 +7,10 @@ for a patient whose data is pulled from a FHIR server. The analytic is known as 
 - an accessible kubeflow deployment (https://www.kubeflow.org/)
 - an accessible FHIR server (https://ibm.github.io/FHIR)
 - an accessible ASCVD microservice deployment that includes both
-data extraction and ascvd calculation https://github.com/Alvearie/health-analytics/tree/main/ascvd-from-fhir and https://github.com/Alvearie/health-analytics/tree/main/ascvd
+data extraction and ascvd calculation https://github.com/LinuxForHealth/health-analytics/tree/main/ascvd-from-fhir and https://github.com/LinuxForHealth/health-analytics/tree/main/ascvd
 - installed kubeflow pipelines sdk (`pip install kfp-tekton`)
 - clone of the Health Analytics repository (cd to the ascvd-kf directory)
-    https://github.com/Alvearie/health-analytics
+    https://github.com/LinuxForHealth/health-analytics
 
 For Variation 2 described below you will also need:
 - Docker installed on your desktop
@@ -27,7 +27,7 @@ There are two different example variations for setting up and using this pipelin
 
 This variation uses a typical Python kubeflow pipeline definition that is compiled and manually uploaded before starting the pipeline. After cloning the repository, navigate to the correct directory and compile the pipeline.
 
-1. `git clone https://github.com/Alvearie/health-analytics.git`
+1. `git clone https://github.com/LinuxForHealth/health-analytics.git`
 1. `cd kfpipelines/ascvd-kf` directory
 1. `python simpleascvdpipeline.py`
 
@@ -35,7 +35,7 @@ This will create `simpleascvdpipeline.yaml` which is a yaml definition for the p
 
 In the kubeflow dashboard, choose Pipelines and +Upload pipeline.  Pick the `simpleascvdpipeline.yaml` file from the previous step.  Then, choose Experiments and New experiment.  Fill in a name and description and pick next.  You can configure a run by picking a pipeline (the one you just uploaded) and providing a run name.
 
-Finally, you will need to provide the Run Parameters for this pipeline before selecting `Start`.  Note that if you deployed the Alvearie Health Patterns Clinical Ingestion flow, then of this information is provided after the helm install. The required run parameters are:
+Finally, you will need to provide the Run Parameters for this pipeline before selecting `Start`.  Note that if you deployed the Health Patterns Clinical Ingestion flow, then of this information is provided after the helm install. The required run parameters are:
 
 #### fhirEndpoint
     Full url for the FHIR server containing the patient data

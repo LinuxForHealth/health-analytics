@@ -3,19 +3,17 @@ entries:
   ascvd:
   - apiVersion: v2
     appVersion: 0.0.1
-    created: "2022-02-16T08:46:00.026304-06:00"
-    description: A Helm Chart to deploy the Alvearie Atherosclerotic Cardiovascular
-      Disease (ASCVD) service.  This service will calculate the risk of cardiovascular
-      disease based on a small set of input parameters.
-    digest: 41e684509a75b9c65e9640b789d2082b79e41f15a29b9117f9bc19c7fe3d3925
-    home: https://github.com/Alvearie/health-analytics/tree/main/ascvd
+    created: "2022-02-16T15:50:01.715262-06:00"
+    description: A Helm Chart to deploy the Atherosclerotic Cardiovascular Disease
+      (ASCVD) service.  This service will calculate the risk of cardiovascular disease
+      based on a small set of input parameters.
+    digest: 78ed53c3ee3b939ade067b69067d8bda6b7acc8fba071a18eb24f7502361484a
+    home: https://github.com/LinuxForHealth/health-analytics/tree/main/ascvd
     keywords:
-    - ibm
-    - alvearie
     - ascvd
     maintainers:
-    - email: atclark@us.ibm.com
-      name: Adam T. Clark
+    - email: dlranum@us.ibm.com
+      name: David Ranum
     name: ascvd
     type: application
     urls:
@@ -24,21 +22,19 @@ entries:
   ascvd-from-fhir:
   - apiVersion: v2
     appVersion: 0.0.1
-    created: "2022-02-16T08:46:00.026842-06:00"
-    description: A Helm Chart to deploy the Alvearie Atherosclerotic Cardiovascular
-      Disease (ASCVD) data extraction (from FHIR) service.
-    digest: 17cda9cd0cd9e0a2ec39d41c86ae3c07d4881a69ef0fad0c03ded7cdfabbe59a
-    home: https://github.com/Alvearie/health-analytics/tree/main/ascvd-from-fhir
+    created: "2022-02-16T15:50:01.715815-06:00"
+    description: A Helm Chart to deploy the Atherosclerotic Cardiovascular Disease
+      (ASCVD) data extraction (from FHIR) service.
+    digest: 6be3745141efff3a6fee431994f561e653a15a1f42814b52fc3080cb252bce3b
+    home: https://github.com/LinuxForHealth/health-analytics/tree/main/ascvd-from-fhir
     keywords:
-    - ibm
-    - alvearie
     - ascvd
     maintainers:
-    - email: atclark@us.ibm.com
-      name: Adam T. Clark
+    - email: dlranum@us.ibm.com
+      name: David Ranum
     name: ascvd-from-fhir
     type: application
     urls:
     - ascvd-from-fhir-0.1.0.tgz
     version: 0.1.0
-generated: "2022-02-16T08:46:00.02425-06:00"
+generated: "2022-02-16T15:50:01.711911-06:00"
