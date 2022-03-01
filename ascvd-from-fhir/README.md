@@ -18,15 +18,17 @@ Check out the source and build the docker image:
 
 1. `git clone https://github.com/LinuxForHealth/health-analytics.git`
 1. `cd health-analytics/ascvd-from-fhir`
-1. `docker build . -t <<GROUP>>/ascvd-from-fhir:1.0-SNAPSHOT`
-1. `docker push <<GROUP>>/ascvd-from-fhir:1.0-SNAPSHOT`
+1. `docker build . -t <<GROUP>>/ascvd-from-fhir:<<TAG>>`
+1. `docker push <<GROUP>>/ascvd-from-fhir:<<TAG>>`
 
+For example, you might use `docker build . -t mygroup/ascvd-from-fhir:0.0.5` where
+`mygroup` is your docker group name and `0.0.5` is your selected image tag.
 
 ### Deploying
 
 This docker image can be run in standalone docker via:
 
-`docker run -p:5000:5000 <<GROUP>>/ascvd_from_fhir:1.0-SNAPSHOT --env ASCVD_URL=<<ASCVD_SERVICE_URL>>`
+`docker run -p:5000:5000 <<GROUP>>/ascvd_from_fhir:<<TAG>> --env ASCVD_URL=<<ASCVD_SERVICE_URL>>`
 
 It can also be run in kubernetes using kubernetes.yaml.  However, you will first need to update four values in that file:
 
